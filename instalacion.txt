@@ -1,0 +1,48 @@
+INSTALACION
+Sistema de usuarios en PHP y MySQL 1.1
+===============================================
+
+Requisitos:
+
+-Servidor web (Apache Server).
+-PHP 5.5 o superior.
+-MySQL 5.1 o superior, controladores de mysqli.
+
+Nota: Se puede ejecutar en paquetes binarios como XAMPP, WampServer, Mamp Server, LAMP entro otros.
+
+-----------------------------------------------
+
+Instalación y configuración
+
+1. Copiar la carpeta "sistema" al DocumentRoot del servidor web regularmente es la carpeta htdocs, www o public_html.
+
+2. Crear una base de datos en MySQL, en este ejemplo utilizaremos el nombre login.
+
+3. Importamos el archivo "login.sql" a la base de datos creada.
+
+4. Abra el archivo funcs/conexion.php con un editor de texto y establezca la configuración de la base de datos.
+
+$mysqli=new mysqli("localhost","usuario_de_mysql","password_de_usuario_de_mysql","login"); 
+
+5. Abrir el archivo funcs/funcs.php buscar la función enviarEmail y configurar los parámetros del correo electrónico que enviara los mensajes de activación y recuperación de contraseña.
+
+$mail->SMTPSecure = 'seguridad'; //Modificar
+$mail->Host = 'smtp.dominio.com'; //Modificar
+$mail->Port = 'puerto'; //Modificar
+$mail->Username = 'miemail@dominio.com'; //Modificar
+$mail->Password = 'password'; //Modificar	
+$mail->setFrom('miemail@dominio.com', 'Sistema de Usuarios'); //Modificar
+
+6. En el archivo registro.php debemos modificar la variable $secret con la clave secreta de nuestro reCaptcha así como el data-sitekey del elemento g-recaptcha del formulario con nuestra clave de reCaptcha.
+	
+7. Abrir en un navegador web la ruta del servidor web y la aplicación. http://localhost/sistema o http://direccion_ip/sistema
+
+Dependencias utilizadas:
+ -PHP
+ -MySQL
+ -PHPMailer 5.2.16
+ -Bootstrap v3.3.7
+ -reCAPTCHA v2
+
+
+
